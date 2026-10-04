@@ -776,6 +776,18 @@ if (certificatesModal) {
     });
 }
 
+// Make certificate cards clickable to open certificates modal
+const certificateCards = document.querySelectorAll('.certificate-card');
+certificateCards.forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+        if (certificatesModal) {
+            certificatesModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
 // ============================================
 // About Modal
 // ============================================
@@ -874,15 +886,32 @@ skillCards.forEach(card => {
 // Portfolio Item Click Handler
 const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-portfolioItems.forEach(item => {
-    const link = item.querySelector('.portfolio-link');
-    if (link) {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const title = item.querySelector('.portfolio-title').textContent;
-            alert(`Opening ${title}...\\nAdd your project link here!`);
-        });
-    }
+portfolioItems.forEach((item, index) => {
+    item.style.cursor = 'pointer';
+    
+    // Map portfolio items to their corresponding modals
+    const projectModalMap = [
+        'social-book',           // Social Book - Frontend Social System
+        'connecthub',            // Connect – Real-Time Chat App
+        'ecommerce-app',         // E-Commerce Web Application
+        'event-management',      // Event Management System
+        'careermap',             // CareerMap – MERN Stack FYP
+        'ai-weather'             // AI Weather Prediction App
+    ];
+    
+    const projectId = projectModalMap[index];
+    
+    item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.getElementById(`projectDetailModal-${projectId}`);
+        if (modal) {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            if (typeof initializeSlider === 'function') {
+                initializeSlider(projectId);
+            }
+        }
+    });
 });
 
 // Initialize animations when page loads

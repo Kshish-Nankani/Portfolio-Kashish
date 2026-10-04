@@ -32,7 +32,7 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
     color: var(--text-primary);
     line-height: 1.6;
@@ -1316,6 +1316,7 @@ section {
     transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .certificate-card:hover {
@@ -1695,16 +1696,24 @@ section {
     flex-shrink: 0;
 }
 
+.contact-modal-details {
+    flex: 1;
+    text-align: left;
+}
+
 .contact-modal-details h4 {
     color: var(--text-primary);
     font-size: 1rem;
     margin-bottom: 0.3rem;
+    text-align: left;
 }
 
 .contact-modal-details p {
     color: var(--text-secondary);
     font-size: 0.95rem;
     margin: 0;
+    text-align: left;
+    word-break: break-word;
 }
 
 .contact-modal-socials {
@@ -1756,6 +1765,7 @@ section {
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.4s ease;
+    cursor: pointer;
 }
 
 .portfolio-item:hover {
@@ -1787,16 +1797,36 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 152, 0, 0.9);
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
 }
 
 .portfolio-item:hover .portfolio-overlay {
     opacity: 1;
+}
+
+.portfolio-view-badge {
+    color: #fff;
+    background: var(--accent-gradient);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+    transition: transform 0.2s ease;
+}
+
+.portfolio-item:hover .portfolio-view-badge {
+    transform: scale(1.05);
 }
 
 .portfolio-link {
@@ -1955,6 +1985,7 @@ section {
     padding: 1.5rem;
     border-radius: 20px;
     transition: all 0.3s ease;
+    text-align: left;
 }
 
 .contact-item:hover {
@@ -1975,12 +2006,21 @@ section {
     flex-shrink: 0;
 }
 
+.contact-details {
+    flex: 1;
+    text-align: left;
+}
+
 .contact-details h4 {
     margin-bottom: 0.3rem;
+    text-align: left;
 }
 
 .contact-details p {
     color: var(--text-secondary);
+    text-align: left;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .contact-form {
@@ -2545,7 +2585,8 @@ section {
     .skill-card:nth-child(12) { animation-delay: 1.2s; }
 
     .portfolio-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
     .portfolio-item {
@@ -2689,6 +2730,28 @@ section {
         gap: 2rem;
     }
 
+    .contact-modal-item {
+        align-items: start;
+        gap: 1rem;
+    }
+
+    .contact-modal-icon {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+    }
+
+    .contact-modal-details {
+        flex: 1;
+        text-align: left;
+    }
+
+    .contact-modal-details p {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        text-align: left;
+    }
+
     .detailed-timeline-header {
         flex-direction: column;
         align-items: flex-start;
@@ -2704,12 +2767,12 @@ section {
     }
 
     .detailed-projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 
     .certificates-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 
@@ -2724,7 +2787,7 @@ section {
     }
 
     .detailed-certificates-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 
@@ -2875,6 +2938,38 @@ section {
     .contact-info {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        text-align: left;
+    }
+
+    .contact-item {
+        text-align: left;
+    }
+
+    .contact-details {
+        flex: 1;
+        text-align: left;
+    }
+
+    .contact-details h4,
+    .contact-details p {
+        text-align: left;
+    }
+
+    .contact-modal-item {
+        align-items: start;
+        gap: 1rem;
+    }
+
+    .contact-modal-details {
+        flex: 1;
+        text-align: left;
+    }
+
+    .contact-modal-details p {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        text-align: left;
+        font-size: 0.9rem;
     }
 
     .form-group input,
@@ -2893,11 +2988,13 @@ section {
     }
 
     .detailed-projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .detailed-certificates-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     /* Project Detail Modal Responsive */
@@ -3129,81 +3226,98 @@ section {
         height: 180px;
     }
 
-    .certificates-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .certificates-grid,
+    .portfolio-grid,
+    .detailed-projects-grid,
+    .detailed-certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
     }
 
-    .certificate-card {
-        padding: 1.5rem;
+    .portfolio-image,
+    .detailed-project-image,
+    .certificate-cover,
+    .detailed-certificate-card .certificate-cover {
+        height: 110px;
+    }
+
+    .portfolio-info,
+    .certificate-content,
+    .detailed-project-content,
+    .detailed-certificate-content {
+        padding: 0.6rem 0.5rem;
+    }
+
+    .portfolio-title,
+    .certificate-title,
+    .detailed-project-title,
+    .detailed-certificate-title {
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .portfolio-tags {
+        gap: 0.25rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .portfolio-tags .tag,
+    .detailed-project-tags .tag {
+        font-size: 0.6rem;
+        padding: 0.15rem 0.35rem;
+        border-radius: 4px;
     }
 
     .certificate-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
     }
 
-    .certificate-title {
-        font-size: 1.1rem;
+    .certificate-issuer,
+    .detailed-certificate-issuer,
+    .detailed-certificate-date {
+        font-size: 0.72rem;
+    }
+
+    .certificate-date {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
     }
 
     .detailed-certificate-badge {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
     }
 
-    .detailed-certificate-title {
-        font-size: 1.1rem;
-    }
-
-    .detailed-certificate-issuer,
-    .detailed-certificate-date {
-        font-size: 0.85rem;
-    }
-
+    .detailed-project-description,
     .detailed-certificate-description {
-        font-size: 0.9rem;
+        font-size: 0.72rem;
+        line-height: 1.35;
+        margin-bottom: 0.4rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
-    .btn {
-        padding: 10px 24px;
-        font-size: 0.9rem;
+    .detailed-project-features {
+        display: none;
     }
 
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stat-card {
-        padding: 1rem;
-    }
-
-    .stat-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-    }
-
-    .contact-item {
-        padding: 1.2rem;
-    }
-
-    .contact-item i {
-        font-size: 1.5rem;
-    }
-
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .portfolio-info {
-        padding: 1.2rem;
-    }
-
-    .portfolio-title {
-        font-size: 1.1rem;
+    .btn-view-details {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.5rem;
+        border-radius: 6px;
+        margin-top: 0.3rem;
     }
 
     .timeline-content {
@@ -3404,13 +3518,53 @@ section {
 
     .contact-item {
         padding: 1rem;
+        text-align: left;
     }
 
-    .contact-item h3 {
+    .contact-details {
+        flex: 1;
+        text-align: left;
+    }
+
+    .contact-details h4,
+    .contact-item h3,
+    .contact-item h4 {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    .contact-details p,
+    .contact-item p {
+        font-size: 0.85rem;
+        text-align: left;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .contact-modal-item {
+        align-items: start;
+        gap: 0.8rem;
+    }
+
+    .contact-modal-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .contact-modal-details {
+        flex: 1;
+        text-align: left;
+    }
+
+    .contact-modal-details h4 {
         font-size: 0.95rem;
     }
 
-    .contact-item p {
+    .contact-modal-details p {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        text-align: left;
         font-size: 0.85rem;
     }
 
@@ -3424,119 +3578,71 @@ section {
         font-size: 0.85rem;
     }
 
-    .portfolio-info {
-        padding: 1rem;
+    .certificates-grid,
+    .portfolio-grid,
+    .detailed-projects-grid,
+    .detailed-certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
     }
 
-    .portfolio-title {
-        font-size: 1rem;
+    .portfolio-image,
+    .detailed-project-image,
+    .certificate-cover,
+    .detailed-certificate-card .certificate-cover {
+        height: 95px;
     }
 
-    .portfolio-description {
-        font-size: 0.85rem;
+    .portfolio-info,
+    .certificate-content,
+    .detailed-project-content,
+    .detailed-certificate-content {
+        padding: 0.5rem 0.4rem;
     }
 
-    .tag {
-        font-size: 0.7rem;
-        padding: 0.3rem 0.6rem;
+    .portfolio-title,
+    .certificate-title,
+    .detailed-project-title,
+    .detailed-certificate-title {
+        font-size: 0.78rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        line-height: 1.25;
     }
 
-    .certificates-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .certificate-card {
-        border-radius: 12px;
-    }
-
-    .certificate-cover {
-        height: 180px;
-    }
-
-    .certificate-content {
-        padding: 1rem;
+    .tag,
+    .portfolio-tags .tag,
+    .detailed-project-tags .tag {
+        font-size: 0.58rem;
+        padding: 0.12rem 0.3rem;
     }
 
     .certificate-icon-badge {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
     }
 
     .certificate-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-    }
-
-    .certificate-title {
-        font-size: 1rem;
-    }
-
-    .certificate-issuer {
-        font-size: 0.85rem;
-    }
-
-    .nav-brand {
-        font-size: 1.3rem;
-    }
-
-    .modal-header h2 {
+        width: 36px;
+        height: 36px;
         font-size: 1.1rem;
     }
 
-    .modal-close {
-        width: 32px;
-        height: 32px;
-        font-size: 1.1rem;
+    .certificate-issuer,
+    .detailed-certificate-issuer,
+    .detailed-certificate-date {
+        font-size: 0.68rem;
     }
 
-    .detailed-skill-card {
-        padding: 0.9rem;
+    .certificate-date {
+        font-size: 0.6rem;
+        padding: 0.15rem 0.4rem;
     }
 
-    .detailed-skill-name {
-        font-size: 0.9rem;
-    }
-
-    .detailed-skill-description {
-        font-size: 0.8rem;
-    }
-
-    .detailed-timeline-content {
-        padding: 1.2rem;
-    }
-
-    .detailed-timeline-title {
-        font-size: 1.05rem;
-    }
-
-    .detailed-timeline-company {
-        font-size: 0.9rem;
-    }
-
-    .detailed-project-content {
-        padding: 1rem;
-    }
-
-    .detailed-project-title {
-        font-size: 1rem;
-    }
-
-    .detailed-project-description {
-        font-size: 0.85rem;
-    }
-
-    .detailed-project-image {
-        height: 150px;
-    }
-
-    .detailed-certificate-card .certificate-cover {
-        height: 160px;
-    }
-
-    .detailed-certificate-content {
-        padding: 1rem;
+    .btn-view-details {
+        font-size: 0.65rem;
+        padding: 0.3rem 0.4rem;
     }
 
     .detailed-certificate-badge {
